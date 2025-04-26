@@ -2,14 +2,14 @@
 
 
 
-## **Chapter 1: Introduction to Molecular Dynamics**
+## **1: Introduction to Molecular Dynamics**
 
 Molecular Dynamics (MD) simulations allow us to study the physical movements of atoms and molecules by numerically solving Newton's equations of motion.  
 This guide provides a step-by-step method for setting up, running, and analyzing MD simulations using **GROMACS**, a widely-used open-source MD simulation software package.
 
 
 
-## **Chapter 2: Installation of GROMACS**
+## **2: Installation of GROMACS**
 
 ### **2.1 Installation for CPU-Based Simulations**
 
@@ -87,7 +87,7 @@ This ensures that GROMACS commands such as `gmx` are available in the terminal.
 
 
 
-## **Chapter 3: Preparing Your System**
+## **3: Preparing Your System**
 
 ### **3.1 Generating Topology Files**
 
@@ -139,7 +139,7 @@ gmx solvate -cp newbox.gro -cs spc216.gro -o solvated.gro -p topol.top
 
 
 
-## **Chapter 4: Adding Ions**
+## **4: Adding Ions**
 
 Prepare the system for ion addition:
 
@@ -157,7 +157,7 @@ Note: If you need a specific ion concentration (e.g., for physiological simulati
 
 
 
-## **Chapter 5: Energy Minimization (EM)**
+## **5: Energy Minimization (EM)**
 
 Minimize the system’s energy to remove bad contacts:
 
@@ -171,7 +171,7 @@ gmx mdrun -v -deffnm em
 
 
 
-## **Chapter 6: Equilibration Phases**
+## **6: Equilibration Phases**
 
 ### **6.1 NVT Equilibration (Constant Number, Volume, and Temperature)**
 
@@ -199,7 +199,7 @@ gmx mdrun -deffnm npt
 
 
 
-## **Chapter 7: Production Molecular Dynamics**
+## **7: Production Molecular Dynamics**
 
 Finally, conduct the actual MD simulation:
 
@@ -226,7 +226,7 @@ gmx mdrun -cpi md.cpt -deffnm md
 
 
 
-## **Chapter 8: Basic Trajectory Analysis**
+## **8: Basic Trajectory Analysis**
 
 After completing the simulation, analyze key properties:
 
@@ -243,7 +243,7 @@ After completing the simulation, analyze key properties:
 
 
 
-## **Chapter 9: Plotting Results with Python**
+## **9: Plotting Results with Python**
 
 To visualize the simulation data, use Python and `matplotlib`. First, ensure you have the necessary Python libraries installed:
 
@@ -278,7 +278,7 @@ plot_xvg('density.xvg', 'Density', 'Time (ns)', 'Density (g/cm³)')
 
 
 
-## **Chapter 10: Summary of the MD Simulation Workflow**
+## **10: Summary of the MD Simulation Workflow**
 
 ```
 1. Prepare the system: pdb2gmx → editconf → solvate → ions
