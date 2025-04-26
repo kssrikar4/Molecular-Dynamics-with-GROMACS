@@ -1,13 +1,13 @@
 # **Molecular Dynamics Simulations Using GROMACS: A Beginner’s Guide**
 
----
+
 
 ## **Chapter 1: Introduction to Molecular Dynamics**
 
 Molecular Dynamics (MD) simulations allow us to study the physical movements of atoms and molecules by numerically solving Newton's equations of motion.  
 This guide provides a step-by-step method for setting up, running, and analyzing MD simulations using **GROMACS**, a widely-used open-source MD simulation software package.
 
----
+
 
 ## **Chapter 2: Installation of GROMACS**
 
@@ -29,7 +29,7 @@ gmx --version
 
 This installation is sufficient for running simulations entirely on the CPU. If you encounter errors during installation, such as missing dependencies, ensure that your system is up-to-date and that required libraries are installed.
 
----
+
 
 ### **2.2 Installation for GPU-Accelerated Simulations (NVIDIA GPUs)**
 
@@ -54,7 +54,7 @@ This installs the following components:
 
 **Reboot** the system after installation to apply driver changes. If you encounter any GPU-specific issues, such as driver conflicts or unsupported GPU models, check NVIDIA's official documentation for troubleshooting steps.
 
----
+
 
 ### **2.3 Installation from Source (with CUDA, OpenCL, and MPI Support)**
 
@@ -85,7 +85,7 @@ source /usr/local/gromacs/bin/GMXRC
 
 This ensures that GROMACS commands such as `gmx` are available in the terminal.
 
----
+
 
 ## **Chapter 3: Preparing Your System**
 
@@ -116,7 +116,7 @@ gmx editconf -f processed.gro -o newbox.gro -c -d 1.0 -bt cubic
 GROMACS offers several box types that might be useful for specific systems:
 
 | Box Type   | Flag                | Description                                       |
-|:-----------|:--------------------|:-------------------------------------------------|
+|:--|:--|:-|
 | Cubic      | `-bt cubic`         | A cube-shaped box (default).                     |
 | Triclinic  | `-bt triclinic`     | A general parallelepiped; good for compact packing.|
 | Octahedron | `-bt octahedron`    | A truncated octahedron; reduces solvent molecules. |
@@ -137,7 +137,7 @@ Fill the box with water molecules:
 gmx solvate -cp newbox.gro -cs spc216.gro -o solvated.gro -p topol.top
 ```
 
----
+
 
 ## **Chapter 4: Adding Ions**
 
@@ -155,7 +155,7 @@ gmx genion -s ions.tpr -o solvated_ions.gro -p topol.top -pname NA -nname CL -ne
 
 Note: If you need a specific ion concentration (e.g., for physiological simulations), consider adjusting the concentration using the `-conc` flag or refer to GROMACS documentation for more details.
 
----
+
 
 ## **Chapter 5: Energy Minimization (EM)**
 
@@ -169,7 +169,7 @@ gmx mdrun -v -deffnm em
 - **Integrator**: steep
 - **Goal**: Relax the structure to a local energy minimum.
 
----
+
 
 ## **Chapter 6: Equilibration Phases**
 
@@ -197,7 +197,7 @@ gmx mdrun -deffnm npt
 - **Pressure**: 1 bar
 - **Velocities**: Continued from NVT (`gen_vel = no`).
 
----
+
 
 ## **Chapter 7: Production Molecular Dynamics**
 
@@ -224,14 +224,14 @@ To resume:
 gmx mdrun -cpi md.cpt -deffnm md
 ```
 
----
+
 
 ## **Chapter 8: Basic Trajectory Analysis**
 
 After completing the simulation, analyze key properties:
 
 | Property                                | Command |
-|:----------------------------------------|:--------|
+|:-|:--|
 | Root Mean Square Deviation (RMSD)       | `gmx rms -s md.tpr -f md.xtc -o rmsd.xvg -tu ns` |
 | Root Mean Square Fluctuation (RMSF)     | `gmx rmsf -s md.tpr -f md.xtc -o rmsf.xvg` |
 | Solvent Accessible Surface Area (SASA)  | `gmx sasa -s md.tpr -f md.xtc -o sasa.xvg` |
@@ -241,7 +241,7 @@ After completing the simulation, analyze key properties:
 | System Pressure                         | `gmx energy -f npt.edr -o pressure.xvg` |
 | System Density                          | `gmx energy -f npt.edr -o density.xvg` |
 
----
+
 
 ## **Chapter 9: Plotting Results with Python**
 
@@ -276,7 +276,7 @@ plot_xvg('pressure.xvg', 'Pressure', 'Time (ns)', 'Pressure (bar)')
 plot_xvg('density.xvg', 'Density', 'Time (ns)', 'Density (g/cm³)')
 ```
 
----
+
 
 ## **Chapter 10: Summary of the MD Simulation Workflow**
 
@@ -290,7 +290,7 @@ plot_xvg('density.xvg', 'Density', 'Time (ns)', 'Density (g/cm³)')
 
 Each phase is critical for achieving a stable, physical, and meaningful molecular dynamics simulation.
 
----
+
 
 ## **Conclusion**
 
