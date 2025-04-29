@@ -43,6 +43,7 @@ sudo apt update
 sudo ubuntu-drivers install
 sudo apt install -y nvidia-cuda-toolkit
 sudo apt install -y libcudnn9-cuda-12 libcudnn9-dev-cuda-12
+sudo apt install ocl-icd-libopencl1 opencl-headers intel-opencl-icd libopenmpi-dev openmpi-bin
 sudo apt install -y python3-venv python3-pip
 ```
 
@@ -223,6 +224,7 @@ To resume:
 ```bash
 gmx mdrun -cpi md.cpt -deffnm md
 ```
+To resume a simulation from equilibration phases change md with nvt/npt.
 
 
 
