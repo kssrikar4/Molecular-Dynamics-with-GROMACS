@@ -245,8 +245,21 @@ After completing the simulation, analyze key properties:
 
 
 
-## **9: Plotting Results with Python**
+## **9: Plotting Results**
 
+### Using Grace
+Make sure `gracebat` is installed:
+
+```bash
+sudo apt install grace
+```
+
+Here’s the **command** you can run **directly in the Ubuntu terminal** to convert your `.xvg` files into `.png` images using `gracebat`:
+```bash
+for f in density.xvg gyrate.xvg pressure.xvg rmsd.xvg rmsf.xvg sasa.xvg hbond.xvg; do gracebat "$f" -hardcopy -hdevice PNG -printfile "${f%.xvg}.png"; done
+```
+
+### Using Python
 To visualize the simulation data, use Python and `matplotlib`. First, ensure you have the necessary Python libraries installed:
 
 ```bash
@@ -278,8 +291,6 @@ plot_xvg('pressure.xvg', 'Pressure', 'Time (ns)', 'Pressure (bar)')
 plot_xvg('density.xvg', 'Density', 'Time (ns)', 'Density (g/cm³)')
 ```
 
-
-
 ## **10: Summary of the MD Simulation Workflow**
 
 ```
@@ -292,9 +303,34 @@ plot_xvg('density.xvg', 'Density', 'Time (ns)', 'Density (g/cm³)')
 
 Each phase is critical for achieving a stable, physical, and meaningful molecular dynamics simulation.
 
+## Preview of Simulation of Fish immunogloblin M-Fc with PDB id [8GHZ](https://www.rcsb.org/structure/8GHZ)
 
+Protein In Water(tip3p) Simulation
 
-## **Conclusion**
+![Protein water simulation of Simulation of Fish immunogloblin M-Fc](plots/ProteinWaterSimulation.gif)
 
-This guide helps anyone looking to engage in computational molecular dynamics research, providing the necessary knowledge and tools to successfully navigate the GROMACS environment and perform high-quality simulations.
-Happy simulation!
+Protein Simulation(Water Molecules Removed)
+
+![Protein simulation of Simulation of Fish immunogloblin M-Fc](plots/ProteinSimulation.gif)
+
+## Plots
+Examples plots that are generated using grace.
+
+### RMSD Plot
+![rmsd](plots/rmsd.png)
+
+### RMSF Plot
+![rmsf](plots/rmsf.png)
+
+### Radius of Gyration Plot
+![Gyrate](plots/gyrate.png)
+
+### H-Bonds Plot
+![H-Bond](plots/hbond.png)
+
+### Pressure Plot
+![Pressure](plots/pressure.png)
+
+### Density Plot
+![Density](plots/density.png)
+
