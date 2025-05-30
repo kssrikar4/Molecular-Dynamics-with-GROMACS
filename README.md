@@ -37,14 +37,12 @@ For systems with NVIDIA GPUs, you will need the appropriate drivers and librarie
 
 ```bash
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y build-essential dkms curl wget git cmake freeglut3-dev libglew-dev libgl1-mesa-dev libglu1-mesa-dev
+sudo apt install -y build-essential dkms curl wget git cmake freeglut3-dev libglew-dev libgl1-mesa-dev libglu1-mesa-dev ocl-icd-libopencl1 opencl-headers intel-opencl-icd libopenmpi-dev openmpi-bin python3-venv python3-pip g++ gcc libfftw3-dev libblas-dev liblapack-dev imagemagick doxygen sphinx-common python3-sphinx python3-pygments ninja-build
 sudo add-apt-repository -y ppa:graphics-drivers/ppa
 sudo apt update
 sudo ubuntu-drivers install
 sudo apt install -y nvidia-cuda-toolkit
 sudo apt install -y libcudnn9-cuda-12 libcudnn9-dev-cuda-12
-sudo apt install ocl-icd-libopencl1 opencl-headers intel-opencl-icd libopenmpi-dev openmpi-bin
-sudo apt install -y python3-venv python3-pip
 ```
 
 This installs the following components:
