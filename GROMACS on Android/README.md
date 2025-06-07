@@ -61,7 +61,7 @@ source ~/.bashrc
 git clone https://github.com/kssrikar4/Molecular-Dynamics-with-GROMACS.git
 cd Molecular-Dynamics-with-GROMACS
 #Change to your target protein
-wget https://files.rcsb.org/download/3gv3.pdb -O protein.pdb
+wget https://alphafold.ebi.ac.uk/files/AF-Q9ULZ0-F1-model_v4.pdb -O protein.pdb
 
 gmx pdb2gmx -f protein.pdb -o processed.gro -water tip3p -ignh
 gmx editconf -f processed.gro -o newbox.gro -c -d 1.0 -bt cubic
