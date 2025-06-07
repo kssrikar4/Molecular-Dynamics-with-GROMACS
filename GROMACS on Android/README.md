@@ -80,13 +80,13 @@ gmx mdrun -deffnm md
 ## Operational Screenshots 
 
 ### GROMACS initial execution displaying synopsis and options within Termux on Android
-![termux1](https://github.com/kssrikar4/Molecular-Dynamics-with-GROMACS/blob/350a5b378f9888eb5540b9697e0f3028cdd4f5ce/plots/Termux-1.jpg) 
+![termux1](https://github.com/kssrikar4/Molecular-Dynamics-with-GROMACS/blob/cfda5c84a54cc8396f30d0c6bbb931cf648cf190/plots/Termux-1.jpg) 
 
 ### GROMACS execution in Termux, showing simulation parameters and real-time progress for a molecular dynamics run.
-![termux2](https://github.com/kssrikar4/Molecular-Dynamics-with-GROMACS/blob/350a5b378f9888eb5540b9697e0f3028cdd4f5ce/plots/Termux-2.jpg)
+![termux2](https://github.com/kssrikar4/Molecular-Dynamics-with-GROMACS/blob/cfda5c84a54cc8396f30d0c6bbb931cf648cf190/plots/Termux-2.jpg)
 
 ### Monitoring GROMACS process using `top` in Termux, displaying CPU and memory utilization.
-![termuxtop](https://github.com/kssrikar4/Molecular-Dynamics-with-GROMACS/blob/350a5b378f9888eb5540b9697e0f3028cdd4f5ce/plots/Termux-top.jpg)
+![termuxtop](https://github.com/kssrikar4/Molecular-Dynamics-with-GROMACS/blob/cfda5c84a54cc8396f30d0c6bbb931cf648cf190/plots/Termux-top.jpg)
 
 
 ## Disclaimer
