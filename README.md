@@ -224,6 +224,29 @@ gmx mdrun -cpi md.cpt -deffnm md
 ```
 To resume a simulation from equilibration phases change md with nvt/npt.
 
+When atoms cross the edge of the unit cell during a molecular dynamics (MD) run, the simulation engine wraps them to the opposite side of the box. When viewed with VMD, it attempts to draw chemical bonds between those wrapped atoms across the entire width of the box, producing long, straight, artificial bonds stretching across your display.
+
+**Common Root Causes**
+
+* **PBC Boundary Crossing (Most Likely):** The protein diffuses across periodic boundaries during the trajectory, splitting residues across opposite ends of the box while VMD tries to draw bonds between them.
+* **Unwrapped Trajectory Raw Coordinates:** You are viewing raw trajectory files (e.g., `.xtc` or `.dcd`) where post-processing image centering was not performed prior to loading into VMD.
+* **Missing Connection/Topology Information:** VMD is inferring bonds based on standard distance cutoffs rather than explicit topology parameters, connecting distant periodicity-wrapped atoms.
+* **System Instability (Unphysical Explosion):** If the distortion accompanied an actual simulation crash (e.g., `NaN` force errors), unphysically high forces or insufficient energy minimization caused steric clashes to explode the coordinate space.
+
+**How to Fix It**
+
+Run `gmx trjconv` to recenter the protein and fix periodic boundary issues before visualization:
+
+```bash
+# Pass 1: Make protein/molecules whole and center the protein
+gmx trjconv -s md.tpr -f md.xtc -o md_pbc.xtc -pbc mol -center
+# Select 1 (Protein) for centering, Select 0 (System) for output
+
+# Pass 2: Fit rotation and translation to remove tumbling
+gmx trjconv -s md.tpr -f md_pbc.xtc -o md_clean.xtc -fit rot+trans
+# Select 4 (Backbone) for fitting, Select 0 (System) for output
+```
+
 
 
 ## **8: Basic Trajectory Analysis**
