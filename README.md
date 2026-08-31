@@ -238,13 +238,17 @@ When atoms cross the edge of the unit cell during a molecular dynamics (MD) run,
 Run `gmx trjconv` to recenter the protein and fix periodic boundary issues before visualization:
 
 ```bash
-# Pass 1: Make protein/molecules whole and center the protein
-gmx trjconv -s md.tpr -f md.xtc -o md_pbc.xtc -pbc mol -center
-# Select 1 (Protein) for centering, Select 0 (System) for output
+# Step 1: Remove sudden coordinate jumps across box edges
+gmx trjconv -s md.tpr -f md.xtc -o md_nojump.xtc -pbc nojump
+# Select 0 (System).
 
-# Pass 2: Fit rotation and translation to remove tumbling
-gmx trjconv -s md.tpr -f md_pbc.xtc -o md_clean.xtc -fit rot+trans
-# Select 4 (Backbone) for fitting, Select 0 (System) for output
+# Step 2: Recenter the protein and keep it intact in the box
+gmx trjconv -s md.tpr -f md_nojump.xtc -o md_centered.xtc -pbc mol -center
+# Select 1 (Protein) for centering, 0 (System) for output
+
+# Step 3: Remove rigid-body translation and rotation (optional, for smooth visualization)
+gmx trjconv -s md.tpr -f md_centered.xtc -o md_fitted.xtc -fit rot+trans
+# Select 4 (Backbone) for fitting, 0 (System) for output
 ```
 
 
